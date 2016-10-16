@@ -1,22 +1,22 @@
 {
-  "name": "reveal.js",
-  "version": "3.3.0",
-  "description": "The HTML Presentation Framework",
-  "homepage": "http://lab.hakim.se/reveal-js",
-  "subdomain": "revealjs",
-  "main": "js/reveal.js",
+  "name": "study",
+  "version": "0.0.1",
+  "description": "study",
+  "homepage": "",
+  "subdomain": "",
+  "main": "",
   "scripts": {
     "test": "grunt test",
     "start": "grunt serve"
   },
   "author": {
-    "name": "Hakim El Hattab",
-    "email": "hakim.elhattab@gmail.com",
-    "web": "http://hakim.se"
+    "name": "mpppk",
+    "email": "niboshiporipori@gmail.com",
+    "web": ""
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/hakimel/reveal.js.git"
+    "url": ""
   },
   "engines": {
     "node": "~4.1.1"
