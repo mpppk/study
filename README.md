@@ -1,3 +1,2 @@
-# perfect_javascript_study
-
-
+# study
+読んだ本をまとめます。
