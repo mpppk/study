@@ -7,4 +7,4 @@
 
 --
 
-## [Perfect JavaScript](/docs/perfect_javascript)
+## [Perfect JavaScript](docs/perfect_javascript)
