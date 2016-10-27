@@ -255,10 +255,81 @@ var obj = Object.create(Object.prototype, {
 
 ---
 Appendix: 
-## Chapter5 in ES-NEXT
+## ES2015
 
 --
 ### class
+* Prototypeを意識せずにクラス定義や継承を行うことができる
+
+```js
+// http://js-next.hatenablog.com/entry/2014/11/01/034607
+
+class Animal {
+  constructor(name) { this.name = name }
+  speak(cry) { console.log( this.name+ 'は' +cry+ 'と鳴きました' ) }
+  static isNamed(animal) { return !!animal.name }
+}
+
+class Cat extends Animal {
+  constructor(name) { super( name ) }
+  meow() { super.speak( 'ミャオ' ) }
+}
+
+const cat = new Cat("mike");
+cat.meow();
+```
 
 --
-### Map
+### Map (連想配列) 
+* Objectとの違い
+    * 任意の値をキーにできる
+    * サイズを簡単に得ることができる
+
+```js
+const myMap = new Map();
+myMap.set("hoge", "key is string");
+const obj = {x: 1};
+myMap.set(obj, "key is object");
+const fn = () => 1;
+myMap.set(fn, "key is function");
+
+myMap.size; // => 3
+
+myMap.get("hoge"); // => "key is string"
+
+myMap.get(obj); // => "key is object"
+myMap.get({x: 1}); // => undefined
+
+const fn2 = () => 1;
+myMap.get(fn); // => "key is function"
+myMap.get(fn2); // => undefined
+```
+
+--
+### Set (値の集合)
+* 重複を許さないコレクション
+
+```js
+const mySet = new Set();
+mySet.add(1);
+mySet.add(1); // 重複しているので追加されない
+mySet.add(5);
+mySet.size; // 2
+```
+
+--
+### WeakMap / WeakSet
+* WeakMap / WeakSetはキーが弱参照であるMap/Set
+    * 他にkeyへ参照している変数がなければGCの対象になる
+    * keyが存在するかどうかはGCに依存するので、key数に依存するメソッドは無い
+
+```js
+const myMap = new Map();
+const myWMap = new WeakMap();
+myMap.set("hoge", "fuga");
+myWMap.set("hoge", "fuga");
+myMap.size; // => 1
+myWMap.size; // => undefined
+myMap.keys(); // => ["hoge"]
+myWMap.keys(); // => undefined
+```
