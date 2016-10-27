@@ -1,7 +1,6 @@
 # Chapter 5
-## ⬇
 
---
+---
 ## 5-2 変数の代入 _P110_
 * 値型変数の代入は値渡し
 * 参照変数の代入は全て参照の値渡し
@@ -24,7 +23,28 @@ function(fb){return ++fb;}(fa); // 2
 fa; // 1
 ```
 
---
+---
+## 5-5 変数の存在チェック _P115_
+### ||代入
+* aが値を持っていなければbを代入するイディオム
+    * `||`の返り値はbooleanではない
+* デフォルト引数の表現にも使える
+
+```js
+var a == true ? a : b; 
+var a = a || b; // 上式と等価
+```
+
+### undefined判定
+```js
+var obj = {};
+obj.hoge === undefined; // true
+var undefined = "define";
+obj.hoge === undefined; // 実行環境によってはfalse
+typeof obj.hoge === 'undefined'; // true
+``` 
+
+---
 ## 5-21 グローバルオブジェクト _P154_
 * 「グローバル変数」は「グローバルオブジェクトのプロパティ」
 * window変数はグローバルオブジェクトの自己参照変数
@@ -36,7 +56,7 @@ function fn(){};
 'fn' in this; // true
 ```
 
---
+---
 ## 5-7-2 コンストラクタとnew式 _P121_
 * あらゆる関数はnew式によるコンストラクタ呼び出しが可能
     * 通常、関数は関数呼び出し/コンストラクタ呼び出しのどちらかのみを想定して作る
@@ -49,7 +69,7 @@ var obj = new MyClass(1);
 obj.x; // 1
 ```
 
---
+---
 ## 5-8 プロパティへのアクセス _P124_
 * ２通りの方法がある
     * ドット演算子(.)
@@ -69,7 +89,7 @@ print(obj[x]); // => 2
 変数の値 | `var x = "y"; obj[x];`
 式の評価結果 | `obj["x" + "y"]`
 
---
+---
 ## 5-10 属性 (1) _P129_
 ### プロパティは複数の属性を持つ
 * value属性
@@ -91,6 +111,9 @@ print(obj[x]); // => 2
 
 * get, set
     * プロパティにアクセスした際の処理を定義できる
+
+---
+# This参照
 
 --
 ## 5-14 this参照 _P134_
@@ -147,7 +170,7 @@ bindedF(); // => "obj_undefined_undefined"
 bindedF("a", "b"); // => "obj_a_b"
 ```
 
---
+---
 # 5-16 Prototype _P137_
 
 --
@@ -218,7 +241,7 @@ var obj = Object.create(Object.prototype, {
 }); // 上のコードと等価
 ```
 
---
+---
 ## 5-19 様々な標準オブジェクト _P152_
 * Object (全てのクラスの基底クラス)
     * Objectへの変更は影響が大きすぎるので極力避ける
@@ -231,36 +254,11 @@ var obj = Object.create(Object.prototype, {
 * Error (エラーを表すクラス)
 
 ---
-# Chapter5 idioms
-## ⬇
-
---
-## 5-5 変数の存在チェック _P115_
-### ||代入
-* aが値を持っていなければbを代入するイディオム
-    * `||`の返り値はbooleanではない
-* デフォルト引数の表現にも使える
-
-```js
-var a == true ? a : b; 
-var a = a || b; // 上式と等価
-```
-
-### undefined判定
-```js
-var obj = {};
-obj.hoge === undefined; // true
-var undefined = "define";
-obj.hoge === undefined; // 実行環境によってはfalse
-typeof obj.hoge === 'undefined'; // true
-``` 
-
----
 Appendix: 
 # Chapter5 in ES-NEXT
-## ⬇
 
 --
 ## class
 
+--
 ## Map
