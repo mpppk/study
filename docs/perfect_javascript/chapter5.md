@@ -1,7 +1,7 @@
 # Chapter 5
 
 ---
-## 5-2 変数の代入 _P110_
+### 5-2 変数の代入 _P110_
 * 値型変数の代入は値渡し
 * 参照変数の代入は全て参照の値渡し
 
@@ -24,8 +24,8 @@ fa; // 1
 ```
 
 ---
-## 5-5 変数の存在チェック _P115_
-### ||代入
+### 5-5 変数の存在チェック _P115_
+#### ||代入
 * aが値を持っていなければbを代入するイディオム
     * `||`の返り値はbooleanではない
 * デフォルト引数の表現にも使える
@@ -35,7 +35,7 @@ var a == true ? a : b;
 var a = a || b; // 上式と等価
 ```
 
-### undefined判定
+#### undefined判定
 ```js
 var obj = {};
 obj.hoge === undefined; // true
@@ -45,7 +45,7 @@ typeof obj.hoge === 'undefined'; // true
 ``` 
 
 ---
-## 5-21 グローバルオブジェクト _P154_
+### 5-21 グローバルオブジェクト _P154_
 * 「グローバル変数」は「グローバルオブジェクトのプロパティ」
 * window変数はグローバルオブジェクトの自己参照変数
 
@@ -57,7 +57,7 @@ function fn(){};
 ```
 
 ---
-## 5-7-2 コンストラクタとnew式 _P121_
+### 5-7-2 コンストラクタとnew式 _P121_
 * あらゆる関数はnew式によるコンストラクタ呼び出しが可能
     * 通常、関数は関数呼び出し/コンストラクタ呼び出しのどちらかのみを想定して作る
     * 便宜上、コンストラクタ呼び出しを意図する関数をコンストラクタと呼ぶ
@@ -70,7 +70,7 @@ obj.x; // 1
 ```
 
 ---
-## 5-8 プロパティへのアクセス _P124_
+### 5-8 プロパティへのアクセス _P124_
 * ２通りの方法がある
     * ドット演算子(.)
     * ブラケット演算子([])
@@ -90,8 +90,8 @@ print(obj[x]); // => 2
 式の評価結果 | `obj["x" + "y"]`
 
 ---
-## 5-10 属性 (1) _P129_
-### プロパティは複数の属性を持つ
+### 5-10 属性 (1) _P129_
+#### プロパティは複数の属性を持つ
 * value属性
     * プロパティ値=value属性
 * enumerable属性
@@ -104,7 +104,7 @@ print(obj[x]); // => 2
     ```
 
 --
-## 5-10 属性 (2) _P129_
+#### 5-10 属性 (2) _P129_
 * preventExtensions, seal, freeze
     * プロパティの追加、変更、削除を禁止する
     * 内部ではconfigurable属性やwritable属性を変更している
@@ -113,10 +113,10 @@ print(obj[x]); // => 2
     * プロパティにアクセスした際の処理を定義できる
 
 ---
-# This参照
+## This参照
 
 --
-## 5-14 this参照 _P134_
+### 5-14 this参照 _P134_
 レシーバオブジェクトを参照する変数
 
 ```js
@@ -124,14 +124,14 @@ var obj = {x: 1, fn: function(){print(this.x)}};
 obj.fn()); // =>1 (fnのレシーバオブジェクトはobj)
 ```
 
-### this参照の特殊なケース
+#### this参照の特殊なケース
 * コンストラクタ呼び出し
 * トップレベルコードのthis参照先はグローバルオブジェクト
     * グローバル変数はグローバルオブジェクトのプロパティであるため
 * apply/call/bindメソッドによるthisの変更
 
 --
-## コンストラクタ呼び出し(再掲)
+### コンストラクタ呼び出し(再掲)
 
 ```js
 function MyClass(x){ this.x = x; }
@@ -139,7 +139,7 @@ var obj = new MyClass(1);
 obj.x; // 1
 ```
 
-## トップレベルコードのthis
+### トップレベルコードのthis
 
 ```js
 var x = "global";
@@ -150,7 +150,7 @@ fn(); // => "global"
 ```
 
 --
-## apply/call/bindメソッドによるthisの変更
+### apply/call/bindメソッドによるthisの変更
 
 ```js
 var x = "global";
@@ -171,10 +171,10 @@ bindedF("a", "b"); // => "obj_a_b"
 ```
 
 ---
-# 5-16 Prototype _P137_
+## 5-16 Prototype _P137_
 
 --
-## コンストラクタを使用したインスタンス生成の問題点
+### コンストラクタを使用したインスタンス生成の問題点
 * プロパティのアクセス制御(public, private)ができない
     * get/set属性を利用
     * クロージャを利用(=> 6章)
@@ -183,7 +183,7 @@ bindedF("a", "b"); // => "obj_a_b"
     * **Prototype継承を利用**
 
 --
-## Prototype継承
+### Prototype継承
 * 全ての関数はprototypeプロパティを持つ
 * 全てのオブジェクトは生成に使ったコンストラクタのprototypeオブジェクトへの暗黙リンクを持つ
     * 仕様ではないが、実装上、暗黙リンクは`__proto__`プロパティとして表現される
@@ -203,8 +203,8 @@ print(c.zz) // undefined
 ```
 
 --
-## 5-17 型判定 _P144_
-### instanceof / isPrototypeOf
+### 5-17 型判定 _P144_
+#### instanceof / isPrototypeOf
 
 ```js
 function Derived(){}
@@ -219,7 +219,7 @@ obj instnceof base; // true
 obj instanceof Object; // true
 ```
 
-### Duck Typing
+#### Duck Typing
 
 ```js
 var duck = {sound: "quack"};
@@ -230,7 +230,7 @@ if('sound' in animal){ animal.sound(); }// 何の動物でも鳴けるなら鳴�
 ```
 
 --
-## 5-18 Object.create _P148_
+### 5-18 Object.create _P148_
 プロトタイプを指定してオブジェクトを生成できる
 
 ```js
@@ -242,7 +242,7 @@ var obj = Object.create(Object.prototype, {
 ```
 
 ---
-## 5-19 様々な標準オブジェクト _P152_
+### 5-19 様々な標準オブジェクト _P152_
 * Object (全てのクラスの基底クラス)
     * Objectへの変更は影響が大きすぎるので極力避ける
 * グローバルオブジェクト
@@ -255,10 +255,10 @@ var obj = Object.create(Object.prototype, {
 
 ---
 Appendix: 
-# Chapter5 in ES-NEXT
+## Chapter5 in ES-NEXT
 
 --
-## class
+### class
 
 --
-## Map
+### Map
